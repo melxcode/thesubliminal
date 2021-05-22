@@ -38,9 +38,8 @@ export default function Marketing() {
             However, this is all fueled by strong content creation.
         </Typography>
 
-        <Typography gutterBottom>
-          
-🎀Kit media
+        <Typography gutterBottom sx={{color:"#5842f4"}} >          
+🎀‎💡Kit media
 
 //Content design & strategy
 //Quality (Post + stories)

@@ -36,8 +36,9 @@ export default function branding() {
           strategy.
           </Typography>
           
-          <Typography gutterBottom>
-           PLAY START WITH AUTENTICITY  The key to building a stellar 
+          <Typography gutterBottom >
+          PLAY START WITH AUTENTICITY  
+                    The key to building a stellar 
           brand concept is to be authentic—always. People are much more likely
            to trust you and buy into your brand if you are being real. 
            Understanding the basics of who you are and exactly what your brand 
@@ -48,13 +49,16 @@ export default function branding() {
            and external brand communication.  
         </Typography>
 
-        <Typography gutterBottom>
+        <Typography gutterBottom >     
             YOUR BRAND CONCEPT should contain all of the feelings, ideas and goals 
             of your company or organization. Consider testing it with a segment of your
-            target audience to see how they respond and revise it based on their feedback. 
-            Once you have a solid concept, you can use this vital foundation 
-            to actually start Branding, Websites, Packaging, Advertisements and more!
+            target audience to see how they respond and revise it based on their feedback.  
         </Typography>
+        <Typography gutterBottom sx={{color:"#5842f4"}} >     
+        🚀Once you have a solid concept, you can start to build a //Logo // Corporative identity 
+        // Billboards // Packaging // and More! 
+        </Typography>
+
       <PhotoContainer photos={fotos}/>
 
       </Container>

@@ -20,10 +20,7 @@ export default function uiux() {
         }}>
           UIUX ✦ DESIGN - USER INTERFACE 
         </Typography>
-        <Typography gutterBottom>
-        UI design and UX design involve very different skill sets, but they are integral
-         to each other’s success. A beautiful design and a brilliant user experience.
-         </Typography>
+        
 
          <Typography gutterBottom>
         UX DESIGNERS: They determine the structure of the interface and the functionality.
@@ -46,7 +43,10 @@ export default function uiux() {
            and/or personality of the app. And they need to make sure every single
             visual element feels united, both aesthetically, and in purpose.
         </Typography>
-
+        <Typography gutterBottom sx={{color:"#5842f4"}} >     
+        🌈 📲💻⭐️ UI design and UX design involve very different skill sets, but they are integral
+         to each other’s success........... A beautiful design and a brilliant user experience.
+         </Typography>
         <PhotoContainer photos={fotos} />
       </Container>
     </Page>

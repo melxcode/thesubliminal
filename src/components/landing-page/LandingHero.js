@@ -14,7 +14,7 @@ import {
   varFadeInUp,
   varFadeInRight
 } from '../animate';
-
+import ReactPlayer from 'react-player'
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
@@ -74,18 +74,14 @@ export default function LandingHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle
-          alt="overlay"
-          src="/static/home/overlay.svg"
-          variants={varFadeIn}
-        />
+       <ReactPlayer
+            className='react-player fixed-bottom'
+            url= 'videos/hero.mp4'
+            width='100%'
+            height='100%'
+            controls = {true}
 
-        <HeroImgStyle
-          alt="hero"
-          src="/static/home/hero.png"
-          variants={varFadeInUp}
-        />
-
+            />
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
