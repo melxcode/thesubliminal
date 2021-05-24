@@ -1,71 +1,80 @@
-import { Icon } from '@iconify/react';
-import { motion } from 'framer-motion';
-import flashFill from '@iconify/icons-eva/flash-fill';
-import { Link as RouterLink } from 'react-router-dom';
+import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
+import flashFill from "@iconify/icons-eva/flash-fill";
+import { Link as RouterLink } from "react-router-dom";
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Button, Box, Link, Container, Typography } from '@material-ui/core';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
+import { Button, Box, Link, Container, Typography } from "@material-ui/core";
 // routes
-import { PATH_DASHBOARD, PATH_HOME } from '../../routes/paths';
+import { PATH_DASHBOARD, PATH_HOME } from "../../routes/paths";
+
 //
 import {
   varFadeIn,
   varWrapEnter,
   varFadeInUp,
-  varFadeInRight
-} from '../animate';
-import ReactPlayer from 'react-player'
+  varFadeInRight,
+} from "../animate";
+import ReactPlayer from "react-player";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  position: 'relative',
-  backgroundColor: '#F2F3F5',
-  [theme.breakpoints.up('md')]: {
+  position: "relative",
+  backgroundColor: "#050405",
+  [theme.breakpoints.up("md")]: {
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100vh',
-    display: 'flex',
-    position: 'fixed',
-    alignItems: 'center'
-  }
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    position: "fixed",
+    alignItems: "center",
+  },
 }));
 
-const ContentStyle = styled('div')(({ theme }) => ({
+const ContentStyle = styled("div")(({ theme }) => ({
   zIndex: 10,
   maxWidth: 520,
-  margin: 'auto',
-  textAlign: 'center',
-  position: 'relative',
+  margin: "auto",
+  textAlign: "center",
+  position: "relative",
   paddingTop: theme.spacing(15),
   paddingBottom: theme.spacing(15),
-  [theme.breakpoints.up('md')]: {
-    margin: 'unset',
-    textAlign: 'left'
-  }
+  [theme.breakpoints.up("md")]: {
+    margin: "unset",
+    textAlign: "left",
+  },
 }));
 
-const HeroOverlayStyle = styled(motion.img)({
-  zIndex: 9,
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  position: 'absolute'
-});
-
-const HeroImgStyle = styled(motion.img)(({ theme }) => ({
+const HeroGifStyle = styled(motion.img)({
   top: 0,
   right: 0,
   bottom: 0,
   zIndex: 8,
-  width: '100%',
-  margin: 'auto',
-  position: 'absolute',
-  [theme.breakpoints.up('lg')]: {
-    right: '8%',
-    width: 'auto',
-    height: '72vh'
-  }
+
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+
+  margin: "auto",
+  position: "absolute",
+});
+
+const HeroImgStyle = styled(motion.video)(({ theme }) => ({
+  top: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 8,
+
+  width: "100%",
+  objectFit: "cover",
+
+  margin: "auto",
+  position: "absolute",
+  [theme.breakpoints.up("lg")]: {
+    width: "100%",
+    height: "100vh",
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -74,24 +83,36 @@ export default function LandingHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-       <ReactPlayer
-            className='react-player fixed-bottom'
-            url= 'videos/hero.mp4'
-            width='100%'
-            height='100%'
-            controls = {true}
-
+        {window.screen.width < 600 ? (
+          <>
+            <HeroGifStyle
+              alt="overlay"
+              src="/herogif.gif"
+              variants={varFadeIn}
             />
+
+            <HeroImgStyle
+              alt="hero"
+              src="/static/home/hero.png"
+              variants={varFadeInUp}
+            />
+          </>
+        ) : (
+          <HeroImgStyle autoPlay loop>
+            <source src="/hero.mp4"></source>
+          </HeroImgStyle>
+        )}
+
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h1" sx={{ color: 'common.white' }}>
+              <Typography variant="h1" sx={{ color: "common.white" }}>
                 Start a <br />
                 New Project <br /> with
                 <Typography
                   component="span"
                   variant="h1"
-                  sx={{ color: 'primary.main' }}
+                  sx={{ color: "primary.main" }}
                 >
                   &nbsp;Subliminal
                 </Typography>
@@ -99,8 +120,11 @@ export default function LandingHero() {
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Typography sx={{ py: 5, color: 'common.white' }}>
-                Welcome to the starting point for your best brand version © helps you with Brand concept design,Logo, Identity, Website, App, UIUX, Packaging, Billboards,Marketing, Social media and others exclusive services.  
+              <Typography sx={{ py: 5, color: "common.white" }}>
+                Welcome to the starting point for your best brand version ©
+                helps you with Brand concept design,Logo, Identity, Website,
+                App, UIUX, Packaging, Billboards,Marketing, Social media and
+                others exclusive services.
               </Typography>
             </motion.div>
 
@@ -109,9 +133,9 @@ export default function LandingHero() {
               variants={varFadeInRight}
               sx={{
                 mb: 5,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: { xs: 'center', md: 'flex-start' }
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", md: "flex-start" },
               }}
             >
               <Box
@@ -125,7 +149,7 @@ export default function LandingHero() {
                 underline="always"
                 href={PATH_HOME.cloud}
                 target="_blank"
-                sx={{ color: 'common.white' }}
+                sx={{ color: "common.white" }}
               >
                 Check our work here
               </Link>
@@ -146,17 +170,15 @@ export default function LandingHero() {
             <Box
               sx={{
                 mt: 5,
-                display: 'flex',
-                justifyContent: { xs: 'center', md: 'flex-start' },
-                '& > :not(:last-of-type)': { mr: 1.5 }
+                display: "flex",
+                justifyContent: { xs: "center", md: "flex-start" },
+                "& > :not(:last-of-type)": { mr: 1.5 },
               }}
-            >
-             
-            </Box>
+            ></Box>
           </ContentStyle>
         </Container>
       </RootStyle>
-      <Box sx={{ height: { md: '100vh' } }} />
+      <Box sx={{ height: { md: "100vh" } }} />
     </>
   );
 }

@@ -36,7 +36,7 @@ import MenuPopover from "../../components/MenuPopover";
 
 const MENU_LINKS = [
   { title: "Home", icon: homeFill, href: "/" },
-  { title: "services", icon: roundSpeed, href: PATH_HOME.dashboard },
+  { title: "Services", icon: roundSpeed, href: PATH_HOME.dashboard },
 ];
 
 const APP_BAR_MOBILE = 64;

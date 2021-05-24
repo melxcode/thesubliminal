@@ -1,41 +1,41 @@
-import { Icon } from '@iconify/react';
-import { useRef, useState } from 'react';
-import homeFill from '@iconify/icons-eva/home-fill';
-import personFill from '@iconify/icons-eva/person-fill';
-import settings2Fill from '@iconify/icons-eva/settings-2-fill';
-import { Link as RouterLink } from 'react-router-dom';
+import { Icon } from "@iconify/react";
+import { useRef, useState } from "react";
+import homeFill from "@iconify/icons-eva/home-fill";
+import personFill from "@iconify/icons-eva/person-fill";
+import settings2Fill from "@iconify/icons-eva/settings-2-fill";
+import { Link as RouterLink } from "react-router-dom";
 // material
-import { alpha } from '@material-ui/core/styles';
+import { alpha } from "@material-ui/core/styles";
 import {
   Box,
   Avatar,
   Button,
   Divider,
   MenuItem,
-  Typography
-} from '@material-ui/core';
+  Typography,
+} from "@material-ui/core";
 // components
-import { MIconButton } from '../../components/@material-extend';
-import MenuPopover from '../../components/MenuPopover';
+import { MIconButton } from "../../components/@material-extend";
+import MenuPopover from "../../components/MenuPopover";
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    label: "Home",
     icon: homeFill,
-    linkTo: '/'
+    linkTo: "/",
   },
   {
-    label: 'Profile',
+    label: "Profile",
     icon: personFill,
-    linkTo: '#'
+    linkTo: "#",
   },
   {
-    label: 'Settings',
+    label: "Settings",
     icon: settings2Fill,
-    linkTo: '#'
-  }
+    linkTo: "#",
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -46,7 +46,7 @@ export default function AccountPopover() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
+    setOpen(false);
   };
   const handleClose = () => {
     setOpen(false);
@@ -62,16 +62,16 @@ export default function AccountPopover() {
           width: 44,
           height: 44,
           ...(open && {
-            '&:before': {
+            "&:before": {
               zIndex: 1,
               content: "''",
-              width: '100%',
-              height: '100%',
-              borderRadius: '50%',
-              position: 'absolute',
-              bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72)
-            }
-          })
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              position: "absolute",
+              bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
+            },
+          }),
         }}
       >
         <Avatar
@@ -88,9 +88,9 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            The subliminal 
+            The subliminal
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
             Portfolio
           </Typography>
         </Box>
@@ -103,7 +103,7 @@ export default function AccountPopover() {
             to={option.linkTo}
             component={RouterLink}
             onClick={handleClose}
-            sx={{ typography: 'body2', py: 1, px: 2.5 }}
+            sx={{ typography: "body2", py: 1, px: 2.5 }}
           >
             <Box
               component={Icon}
@@ -111,7 +111,7 @@ export default function AccountPopover() {
               sx={{
                 mr: 2,
                 width: 24,
-                height: 24
+                height: 24,
               }}
             />
 
