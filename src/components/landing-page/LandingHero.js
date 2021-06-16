@@ -87,7 +87,7 @@ export default function LandingHero() {
           <>
             <HeroGifStyle
               alt="overlay"
-              src="/herogif.gif"
+              src="https://i.ibb.co/QcH06j0/hero.gif"
               variants={varFadeIn}
             />
 
