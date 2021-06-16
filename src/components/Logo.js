@@ -5,5 +5,5 @@ import { logo } from "../constants/URLS";
 // ----------------------------------------------------------------------
 
 export default function Logo({ ...other }) {
-  return <Box component="img" alt={logo} height={70} {...other} />;
+  return <Box component="img" alt={logo} src={logo} height={70} {...other} />;
 }
