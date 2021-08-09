@@ -1,6 +1,6 @@
 import faker from "faker";
 import PropTypes from "prop-types";
-import { set, sub, formatDistanceToNow } from "date-fns";
+import { set, sub } from "date-fns";
 import { noCase } from "change-case";
 import { Icon } from "@iconify/react";
 

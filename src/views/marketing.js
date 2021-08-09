@@ -37,8 +37,9 @@ export default function Marketing() {
         </Typography>
 
         <Typography gutterBottom sx={{ color: "#5842f4" }}>
-          🎀‎💡Kit media //Content design & strategy //Quality (Post + stories)
-          //Community growth //Brand solidification //Visual Identity
+          🎀‎💡Kit media -- Content design & strategy -- Quality (Post +
+          stories) -- Community growth -- Brand solidification -- Visual
+          Identity
         </Typography>
         <PhotoContainer photos={marketingUrls} />
       </Container>

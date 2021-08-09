@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getRequests, deleteMessage } from "../api/contact";
-import { useSnackbar } from "notistack";
 import {
   Box,
   Grid,
   TextField,
   Autocomplete,
   Card,
-  CardHeader,
   Typography,
   CircularProgress,
 } from "@material-ui/core";

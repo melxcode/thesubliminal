@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import HOME_PATH from "../../routes/home.routes";
 import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, experimentalStyled as styled } from "@material-ui/core/styles";
@@ -11,7 +10,6 @@ import {
   Toolbar,
   IconButton,
   Button,
-  Link as RouterLink,
 } from "@material-ui/core";
 //
 import Searchbar from "./Searchbar";

@@ -15,7 +15,6 @@ import {
   varFadeInUp,
   varFadeInRight,
 } from "../animate";
-import ReactPlayer from "react-player";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
