@@ -105,7 +105,7 @@ export default function LandingHero() {
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h1" sx={{ color: "common.white" }}>
+              <Typography variant="h3" sx={{ color: "common.white", mt: 15 }}>
                 Start a <br />
                 New Project <br /> with
                 <Typography
@@ -119,7 +119,10 @@ export default function LandingHero() {
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Typography sx={{ py: 5, color: "common.white" }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ py: 5, color: "common.white" }}
+              >
                 Welcome to the starting point for your best brand version ©
                 helps you with Brand concept design,Logo, Identity, Website,
                 App, UIUX, Packaging, Billboards,Marketing, Social media and

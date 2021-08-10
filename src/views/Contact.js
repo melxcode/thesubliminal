@@ -1,3 +1,4 @@
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 // material
 import { experimentalStyled as styled } from "@material-ui/core/styles";
@@ -10,6 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import Page from "../components/Page";
+import CalendlyWidget from "../components/calendly";
 
 import ContactForm from "../components/contact/ContactForm";
 
@@ -42,7 +44,6 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   maxWidth: 464,
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   margin: theme.spacing(2, 0, 2, 2),
 }));
 
@@ -72,6 +73,9 @@ export default function Register() {
             alt="contact"
             src="/static/illustrations/illustration_login.svg"
           />
+          <Typography variant="h3" sx={{ px: 5, mt: 5, mb: 15 }}>
+            Book a call to talk about your idea !
+          </Typography>
         </SectionStyle>
       </Hidden>
 
@@ -83,7 +87,7 @@ export default function Register() {
                 Get started and feel
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                Your brand power. 
+                Your brand power.
               </Typography>
             </Box>
             <Box
@@ -93,7 +97,7 @@ export default function Register() {
             />
           </Box>
           <ContactForm />
-
+          <CalendlyWidget username="bysubliminal" duration="15mins" />
           <Typography
             variant="body2"
             align="center"

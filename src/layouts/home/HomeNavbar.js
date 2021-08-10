@@ -84,7 +84,8 @@ const ToolbarShadowStyle = styled("div")(({ theme }) => ({
 export default function HomeNavbar() {
   const anchorRef = useRef(null);
   const { pathname } = useLocation();
-  const offset = useOffSetTop(100);
+  const offset = useOffSetTop(10);
+
   const [openMenu, setOpenMenu] = useState(false);
   const isHome = pathname === "/";
   const history = useHistory();
@@ -166,9 +167,7 @@ export default function HomeNavbar() {
             justifyContent: "space-between",
           }}
         >
-          <RouterLink to="/">
-            <Logo />
-          </RouterLink>
+          <RouterLink to="/">{offset && <Logo />}</RouterLink>
           <Box sx={{ flexGrow: 1 }} />
 
           <Hidden mdDown>{renderMenuDesktop}</Hidden>

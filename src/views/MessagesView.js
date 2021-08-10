@@ -20,6 +20,7 @@ const SubscriptionItem = ({ subscriptor }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        textAlign: "center",
         flexDirection: "column",
         borderTop: `1px solid #108F61`,
         mb: 1,
@@ -187,8 +188,8 @@ const MessageView = () => {
               </Box>
             </Card>
             <Box sx={{ display: "flex", mt: 5 }}>
-              <TimeCard title="This Month" number={messageData.monthly} />
-              <TimeCard title="This Day" number={messageData.today} />
+              <TimeCard title=" Monthly" number={messageData.monthly} />
+              <TimeCard title="Daily" number={messageData.today} />
             </Box>
           </Grid>
         </>
