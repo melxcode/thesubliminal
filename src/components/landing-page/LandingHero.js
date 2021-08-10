@@ -35,7 +35,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
   zIndex: 10,
   maxWidth: 520,
   margin: "auto",
-  textAlign: "center",
+  textAlign: "left",
   position: "relative",
   paddingTop: theme.spacing(15),
   paddingBottom: theme.spacing(15),
@@ -105,7 +105,7 @@ export default function LandingHero() {
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h3" sx={{ color: "common.white", mt: 15 }}>
+              <Typography variant="h2" sx={{ color: "common.white", mt: 15 }}>
                 Start a <br />
                 New Project <br /> with
                 <Typography
@@ -160,6 +160,11 @@ export default function LandingHero() {
             <motion.div variants={varFadeInRight}>
               <Button
                 size="large"
+                style={
+                  window.screen.width < 600
+                    ? { display: "flex", justifyContent: "center" }
+                    : null
+                }
                 variant="contained"
                 component={RouterLink}
                 to={PATH_DASHBOARD.root}

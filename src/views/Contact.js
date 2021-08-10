@@ -97,11 +97,13 @@ export default function Register() {
             />
           </Box>
           <ContactForm />
-          <CalendlyWidget username="bysubliminal" duration="15mins" />
+          <Box sx={{ mt: 5 }}>
+            <CalendlyWidget username="bysubliminal" duration="15mins" />
+          </Box>
           <Typography
             variant="body2"
             align="center"
-            sx={{ color: "text.secondary", mt: 3 }}
+            sx={{ color: "text.secondary" }}
           >
             By registering, you'll Contact Subliminal&nbsp;
             <Link underline="always" sx={{ color: "text.primary" }}>

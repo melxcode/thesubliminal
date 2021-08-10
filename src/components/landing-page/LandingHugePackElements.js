@@ -98,20 +98,20 @@ export default function LandingHugePackElements() {
                   variant="overline"
                   sx={{ color: "text.secondary", display: "block" }}
                 >
-                  Interface Starter Kit
+                  Smart Marketing
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={textAnimate}>
                 <Typography variant="h2" paragraph>
-                  Huge Pack of Elements
+                  Start with knowing your people
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={textAnimate}>
                 <Typography sx={{ color: "text.secondary" }}>
-                  We collected most popular elements. Menu, sliders, buttons,
-                  inputs etc. are all here. Just dive in!
+                  If you got an Idea-A Dream, a Brand. a Business. We are here
+                  yo get behind it and help you share it with the world
                 </Typography>
               </MotionInView>
 

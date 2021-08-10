@@ -2,7 +2,6 @@
 import { experimentalStyled as styled } from "@material-ui/core/styles";
 import { Button, Box, Container, Typography } from "@material-ui/core";
 // routes
-import { PATH_HOME } from "../../routes/paths";
 //
 import { varFadeInDown, varFadeInUp, MotionInView } from "../animate";
 
@@ -62,15 +61,17 @@ export default function LandingAdvertisement() {
             sx={{ color: "common.white", mb: 5 }}
           >
             <Typography variant="h2">
-              Get started with
-              <br /> Subliminal Kit today
+              Crypto Art Experience
+              <br /> Digital Gallery
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>
             <Button
               size="large"
               variant="contained"
-              href={PATH_HOME.contact}
+              onClick={() => {
+                window.open("https://opensea.io/bysubliminalgallery");
+              }}
               sx={{
                 boxShadow: (theme) => theme.customShadows.z8,
                 color: (theme) =>
@@ -79,7 +80,7 @@ export default function LandingAdvertisement() {
                 "&:hover": { bgcolor: "grey.300" },
               }}
             >
-              Purchase Now
+              Purchase CryptoArt
             </Button>
           </MotionInView>
         </Box>
