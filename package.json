@@ -1,6 +1,7 @@
 {
   "name": "bysubliminal",
   "author": "bysubliminal",
+  "homepage": "http://www.bysubliminal.net/",
   "version": "2.0.0",
   "private": true,
   "scripts": {

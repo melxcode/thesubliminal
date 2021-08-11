@@ -105,15 +105,16 @@ export default function LandingHero() {
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h2" sx={{ color: "common.white", mt: 15 }}>
-                Start a <br />
-                New Project <br /> with
+              <Typography variant="h1" sx={{ color: "common.white", mt: 15 }}>
+                A powerfull <br />
+                Branding ―――
+                <br /> powerfull
                 <Typography
                   component="span"
                   variant="h1"
                   sx={{ color: "primary.main" }}
                 >
-                  &nbsp;Subliminal
+                  &nbsp;Brand
                 </Typography>
               </Typography>
             </motion.div>
@@ -121,12 +122,10 @@ export default function LandingHero() {
             <motion.div variants={varFadeInRight}>
               <Typography
                 variant="subtitle2"
-                sx={{ py: 5, color: "common.white" }}
+                sx={{ py: 5, pb: 1, color: "common.white" }}
               >
-                Welcome to the starting point for your best brand version ©
-                helps you with Brand concept design,Logo, Identity, Website,
-                App, UIUX, Packaging, Billboards,Marketing, Social media and
-                others exclusive services.
+                {window.screen.width > 600 &&
+                  " Welcome to the starting point for your best brand version © helps you with Brand concept design,Logo, Identity, Website, App, UIUX, Packaging, Billboards,Marketing, Social media and others exclusive services."}
               </Typography>
             </motion.div>
 
@@ -134,7 +133,7 @@ export default function LandingHero() {
               component={motion.div}
               variants={varFadeInRight}
               sx={{
-                mb: 5,
+                mb: 2,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: { xs: "center", md: "flex-start" },
