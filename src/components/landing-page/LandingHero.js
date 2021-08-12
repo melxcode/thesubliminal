@@ -9,12 +9,7 @@ import { Button, Box, Link, Container, Typography } from "@material-ui/core";
 import { PATH_DASHBOARD, PATH_HOME } from "../../routes/paths";
 
 //
-import {
-  varFadeIn,
-  varWrapEnter,
-  varFadeInUp,
-  varFadeInRight,
-} from "../animate";
+import { varWrapEnter, varFadeInUp, varFadeInRight } from "../animate";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
@@ -45,20 +40,6 @@ const ContentStyle = styled("div")(({ theme }) => ({
   },
 }));
 
-const HeroGifStyle = styled(motion.img)({
-  top: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 8,
-
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-
-  margin: "auto",
-  position: "absolute",
-});
-
 const HeroImgStyle = styled(motion.video)(({ theme }) => ({
   top: 0,
   right: 0,
@@ -83,19 +64,11 @@ export default function LandingHero() {
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
         {window.screen.width < 600 ? (
-          <>
-            <HeroGifStyle
-              alt="overlay"
-              src="https://i.ibb.co/QcH06j0/hero.gif"
-              variants={varFadeIn}
-            />
-
-            <HeroImgStyle
-              alt="hero"
-              src="/static/home/hero.png"
-              variants={varFadeInUp}
-            />
-          </>
+          <HeroImgStyle
+            alt="hero"
+            src="/static/home/hero.png"
+            variants={varFadeInUp}
+          />
         ) : (
           <HeroImgStyle autoPlay loop>
             <source src="/hero.mp4"></source>
