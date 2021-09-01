@@ -5,6 +5,7 @@ function path(root, sublink) {
 }
 
 const ROOTS_DASHBOARD = "/services";
+const ROOTS_NFT = "/gallery";
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +24,6 @@ export const PATH_DASHBOARD = {
     uiux: path(ROOTS_DASHBOARD, "/uiux"),
     branding: path(ROOTS_DASHBOARD, "/branding"),
     marketing: path(ROOTS_DASHBOARD, "/marketing"),
-
   },
   app: {
     root: path(ROOTS_DASHBOARD, "/drop"),
@@ -31,4 +31,9 @@ export const PATH_DASHBOARD = {
     pageFive: path(ROOTS_DASHBOARD, "/drop/five"),
     pageSix: path(ROOTS_DASHBOARD, "/drop/six"),
   },
+};
+
+export const PATH_NFT = {
+  root: path(ROOTS_NFT, "/"),
+  market: path(ROOTS_NFT, "/marketplace"),
 };

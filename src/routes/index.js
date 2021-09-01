@@ -9,6 +9,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import DashboardRoutes from "./dashboard.routes";
 import DashboardLayout from "../layouts/dashboard";
 import HomeRoutes from "./home.routes";
+import NftRoutes from "./nft.routes";
 
 // ----------------------------------------------------------------------
 
@@ -106,6 +107,8 @@ const routes = [
     path: "/requests",
     component: lazy(() => import("../views/MessagesView")),
   },
+  // NFT Routes
+  NftRoutes,
 
   // App Routes
   DashboardRoutes,

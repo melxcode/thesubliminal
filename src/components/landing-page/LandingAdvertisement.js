@@ -2,7 +2,8 @@
 import { experimentalStyled as styled } from "@material-ui/core/styles";
 import { Button, Box, Container, Typography } from "@material-ui/core";
 // routes
-//
+import { useHistory } from "react-router-dom";
+import { PATH_NFT } from "../../routes/paths";
 import { varFadeInDown, varFadeInUp, MotionInView } from "../animate";
 
 // ----------------------------------------------------------------------
@@ -27,6 +28,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LandingAdvertisement() {
+  const history = useHistory();
   return (
     <Container maxWidth="lg">
       <ContentStyle>
@@ -70,7 +72,7 @@ export default function LandingAdvertisement() {
               size="large"
               variant="contained"
               onClick={() => {
-                window.open("https://opensea.io/bysubliminalgallery");
+                history.push(PATH_NFT.market);
               }}
               sx={{
                 boxShadow: (theme) => theme.customShadows.z8,
