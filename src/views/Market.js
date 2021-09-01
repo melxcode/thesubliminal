@@ -6,13 +6,59 @@ import { HeaderDashboard } from "../components/nft";
 
 const NFTS = [
   {
-    favorite: false,
-    likes: 0,
-    image: "",
-    title: "title",
-    description: "descriptions",
-    author: "",
-    price: "",
+    id: 1,
+    isFavorite: false,
+    likes: 1,
+    image:
+      "https://media.istockphoto.com/photos/pac-man-cookie-dessert-game-picture-id1221462278?s=612x612",
+    title: "Pakman",
+    description: "the race of the life",
+    author: "mycryptoverse",
+    price: "1.003",
+  },
+  {
+    id: 1,
+    isFavorite: true,
+    likes: 3,
+    image:
+      "https://media.istockphoto.com/photos/pac-man-cookie-dessert-game-picture-id1221462278?s=612x612",
+    title: "Pakman",
+    description: "the race of the life",
+    author: "mycryptoverse",
+    price: "1.003",
+  },
+  {
+    id: 1,
+    isFavorite: false,
+    likes: 1,
+    image:
+      "https://media.istockphoto.com/photos/pac-man-cookie-dessert-game-picture-id1221462278?s=612x612",
+    title: "Pakman",
+    description: "the race of the life",
+    author: "mycryptoverse",
+    price: "1.003",
+  },
+  {
+    id: 1,
+    isFavorite: false,
+    likes: 1,
+    image:
+      "https://media.istockphoto.com/photos/pac-man-cookie-dessert-game-picture-id1221462278?s=612x612",
+    title: "Pakman",
+    description: "the race of the life",
+    author: "mycryptoverse",
+    price: "1.003",
+  },
+  {
+    id: 1,
+    isFavorite: false,
+    likes: 1,
+    image:
+      "https://media.istockphoto.com/photos/pac-man-cookie-dessert-game-picture-id1221462278?s=612x612",
+    title: "Pakman",
+    description: "the race of the life",
+    author: "mycryptoverse",
+    price: "1.003",
   },
 ];
 
@@ -22,15 +68,15 @@ const MarketPlace = () => {
       <Container>
         <HeaderDashboard
           heading=""
-          links={[
-            { name: "Gallery" },
-            { name: "Market", href: "" },
-            { name: "NFT" },
-          ]}
+          links={[{ name: "Gallery" }, { name: "Market" }, { name: "NFT" }]}
         />
         <Grid container spacing={3}>
           {NFTS.map((nft) => (
-            <NftCard nft={nft} key={nft.id} />
+            <NftCard
+              nft={nft}
+              key={nft.id}
+              sx={{ border: "1px solid grey", ml: 2, mt: 2 }}
+            />
           ))}
         </Grid>
       </Container>

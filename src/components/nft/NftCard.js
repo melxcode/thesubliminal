@@ -1,9 +1,6 @@
-import React from "react";
-import { Icon } from "@iconify/react";
-import twitterFill from "@iconify/icons-eva/twitter-fill";
-import linkedinFill from "@iconify/icons-eva/linkedin-fill";
-import facebookFill from "@iconify/icons-eva/facebook-fill";
-import instagramFilled from "@iconify/icons-ant-design/instagram-filled";
+import React, { useState, useEffect } from "react";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 // material
 import { alpha, experimentalStyled as styled } from "@material-ui/core/styles";
 import {
@@ -16,35 +13,16 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 // utils
 
-const SOCIALS = [
-  {
-    name: "Facebook",
-    icon: <Icon icon={facebookFill} width={20} height={20} color="#1877F2" />,
-  },
-  {
-    name: "Instagram",
-    icon: (
-      <Icon icon={instagramFilled} width={20} height={20} color="#D7336D" />
-    ),
-  },
-  {
-    name: "Linkedin",
-    icon: <Icon icon={linkedinFill} width={20} height={20} color="#006097" />,
-  },
-  {
-    name: "Twitter",
-    icon: <Icon icon={twitterFill} width={20} height={20} color="#1C9CEA" />,
-  },
-];
 function SvgIconStyle({ src, color = "inherit", sx }) {
   return (
     <Box
       component="span"
       sx={{
         width: 24,
-        height: 24,
+        height: 100,
         mask: `url(${src}) no-repeat center / contain`,
         WebkitMask: `url(${src}) no-repeat center / contain`,
         bgcolor: `${color}.main`,
@@ -60,111 +38,111 @@ function SvgIconStyle({ src, color = "inherit", sx }) {
 
 const CardMediaStyle = styled("div")(({ theme }) => ({
   display: "flex",
+  width: "250px",
   position: "relative",
   justifyContent: "center",
-  paddingTop: "calc(100% * 9 / 16)",
-  "&:before": {
-    top: 0,
-    zIndex: 9,
-    content: "''",
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    backdropFilter: "blur(3px)",
-    WebkitBackdropFilter: "blur(3px)", // Fix on Mobile
-    borderTopLeftRadius: theme.shape.borderRadiusMd,
-    borderTopRightRadius: theme.shape.borderRadiusMd,
-    backgroundColor: alpha(theme.palette.primary.darker, 0.72),
-  },
+  paddingTop: "calc(100% * 9 / 17)",
+  paddingRight: 8,
+  paddingLeft: 8,
 }));
 
-const CoverImgStyle = styled("img")({
-  top: 0,
-  zIndex: 8,
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  position: "absolute",
+const NftImage = styled("img")({
+  marginTop: "-133px",
+  height: "256px",
+  width: 245,
+  borderRadius: "20px",
 });
 
-function InfoItem(number) {
-  return (
-    <Grid item xs={4} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="caption"
-        sx={{ mb: 0.5, color: "text.secondary", display: "block" }}
-      >
-        Follower
-      </Typography>
-      <Typography variant="subtitle1">{number}</Typography>
-    </Grid>
-  );
-}
+const Header = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  paddingRight: "18px",
+  alignItems: "center",
+});
+
+const Footer = styled("div")({
+  display: "flex",
+  justifyContent: "flex-end",
+  width: "100%",
+  paddingRight: "13px",
+  alignItems: "center",
+});
+
+const DetailsBox = styled("div")({
+  display: "flex",
+  justifyContent: "flex-start",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  paddingLeft: 10,
+  marginBottom: "10px",
+  marginTop: "10px",
+});
 
 const NftCard = ({ nft, ...other }) => {
-  const {
-    title: name,
-    cover,
-    description: position,
-    follower = 1,
-    totalPost = 2,
-    avatarUrl,
-    following = 2,
-  } = nft;
+  const [currentNft, setCurrentNft] = useState({});
+
+  useEffect(() => {
+    setCurrentNft(nft);
+  }, [nft]);
+
   return (
     <Card {...other}>
+      <Header>
+        <Box>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </Box>
+        <Box>
+          <IconButton
+            onClick={() => {
+              setCurrentNft({
+                ...currentNft,
+                isFavorite: !currentNft.isFavorite,
+                likes: currentNft.isFavorite
+                  ? currentNft.likes - 1
+                  : currentNft.likes + 1,
+              });
+            }}
+          >
+            {currentNft.isFavorite ? (
+              <FavoriteIcon style={{ marginRight: "5px" }} />
+            ) : (
+              <FavoriteBorderIcon style={{ marginRight: "5px" }} />
+            )}
+          </IconButton>
+          {currentNft.likes}
+        </Box>
+      </Header>
       <CardMediaStyle>
-        <SvgIconStyle
-          color="paper"
-          src="/static/icons/shape-avatar.svg"
-          sx={{
-            width: 144,
-            height: 62,
-            zIndex: 10,
-            bottom: -26,
-            position: "absolute",
-          }}
-        />
-        <Avatar
-          alt={name}
-          src={avatarUrl}
-          sx={{
-            width: 64,
-            height: 64,
-            zIndex: 11,
-            position: "absolute",
-            transform: "translateY(-50%)",
-          }}
-        />
-        <CoverImgStyle alt="cover" src={cover} />
+        <NftImage alt="nft" src={currentNft.image} />
       </CardMediaStyle>
 
-      <Typography variant="subtitle1" align="center" sx={{ mt: 6 }}>
-        {name}
-      </Typography>
-      <Typography
-        variant="body2"
-        align="center"
-        sx={{ color: "text.secondary" }}
-      >
-        {position}
-      </Typography>
-
-      <Box sx={{ textAlign: "center", mt: 2, mb: 2.5 }}>
-        {SOCIALS.map((social) => (
-          <Tooltip key={social.name} title={social.name}>
-            <IconButton>{social.icon}</IconButton>
+      <DetailsBox>
+        <Typography variant="subtitle1" align="center">
+          {currentNft.title}
+        </Typography>
+        <Typography
+          variant="body2"
+          align="center"
+          sx={{ color: "text.secondary" }}
+        >
+          {currentNft.description}
+        </Typography>
+        <Footer>
+          <Tooltip title="ETH" placement="top">
+            <img
+              style={{ marginRight: "5px" }}
+              height="16"
+              alt="ETH"
+              src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+            />
           </Tooltip>
-        ))}
-      </Box>
-
-      <Divider />
-
-      <Grid container sx={{ py: 3 }}>
-        {InfoItem(follower)}
-        {InfoItem(following)}
-        {InfoItem(totalPost)}
-      </Grid>
+          <Typography sx={{ fontSize: 13, fontFamily: "revert" }}>
+            {currentNft.price}
+          </Typography>
+        </Footer>
+      </DetailsBox>
     </Card>
   );
 };
