@@ -2,39 +2,18 @@ import React, { useState, useEffect } from "react";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 // material
-import { alpha, experimentalStyled as styled } from "@material-ui/core/styles";
+import { experimentalStyled as styled } from "@material-ui/core/styles";
 import {
   Box,
   Card,
-  Grid,
-  Avatar,
   Tooltip,
-  Divider,
+  Button,
   Typography,
   IconButton,
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { updateNftLikes } from "../../api/nfts";
 // utils
-
-function SvgIconStyle({ src, color = "inherit", sx }) {
-  return (
-    <Box
-      component="span"
-      sx={{
-        width: 24,
-        height: 100,
-        mask: `url(${src}) no-repeat center / contain`,
-        WebkitMask: `url(${src}) no-repeat center / contain`,
-        bgcolor: `${color}.main`,
-        ...(color === "inherit" && { bgcolor: "currentColor" }),
-        ...(color === "action" && { bgcolor: "action.active" }),
-        ...(color === "disabled" && { bgcolor: "action.disabled" }),
-        ...(color === "paper" && { bgcolor: "background.paper" }),
-        ...sx,
-      }}
-    />
-  );
-}
 
 const CardMediaStyle = styled("div")(({ theme }) => ({
   display: "flex",
@@ -62,10 +41,10 @@ const Header = styled("div")({
 
 const Footer = styled("div")({
   display: "flex",
-  justifyContent: "flex-end",
+  justifyContent: "space-between",
   width: "100%",
-  paddingRight: "13px",
   alignItems: "center",
+  marginTop: "5px",
 });
 
 const DetailsBox = styled("div")({
@@ -80,7 +59,6 @@ const DetailsBox = styled("div")({
 
 const NftCard = ({ nft, ...other }) => {
   const [currentNft, setCurrentNft] = useState({});
-
   useEffect(() => {
     setCurrentNft(nft);
   }, [nft]);
@@ -95,14 +73,10 @@ const NftCard = ({ nft, ...other }) => {
         </Box>
         <Box>
           <IconButton
-            onClick={() => {
-              setCurrentNft({
-                ...currentNft,
-                isFavorite: !currentNft.isFavorite,
-                likes: currentNft.isFavorite
-                  ? currentNft.likes - 1
-                  : currentNft.likes + 1,
-              });
+            onClick={async () => {
+              const operation = currentNft.isFavorite ? "SUBSTRACT" : "ADD";
+              const updatedNft = await updateNftLikes(operation, currentNft);
+              setCurrentNft(updatedNft);
             }}
           >
             {currentNft.isFavorite ? (
@@ -130,17 +104,23 @@ const NftCard = ({ nft, ...other }) => {
           {currentNft.description}
         </Typography>
         <Footer>
-          <Tooltip title="ETH" placement="top">
-            <img
-              style={{ marginRight: "5px" }}
-              height="16"
-              alt="ETH"
-              src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-            />
-          </Tooltip>
-          <Typography sx={{ fontSize: 13, fontFamily: "revert" }}>
-            {currentNft.price}
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Tooltip title="ETH" placement="top">
+              <img
+                style={{ marginRight: "5px" }}
+                height="16"
+                alt="ETH"
+                src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+              />
+            </Tooltip>
+            <Typography sx={{ fontSize: 13, fontFamily: "revert" }}>
+              {currentNft.price}
+            </Typography>
+          </Box>
+
+          <Button color="primary" variant="contained" sx={{ mr: 1 }}>
+            Buy Now
+          </Button>
         </Footer>
       </DetailsBox>
     </Card>
