@@ -9,10 +9,13 @@ import {
   Tooltip,
   Button,
   Typography,
+  TextField,
   IconButton,
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { updateNftLikes } from "../../api/nfts";
+import { postMetric } from "../../api/metrics";
+import Modal from "../Modal";
 // utils
 
 const CardMediaStyle = styled("div")(({ theme }) => ({
@@ -57,11 +60,59 @@ const DetailsBox = styled("div")({
   marginTop: "10px",
 });
 
-const NftCard = ({ nft, ...other }) => {
-  const [currentNft, setCurrentNft] = useState({});
+const ModalContent = ({ email, setEmail }) => {
+  return (
+    <Box>
+      <Typography>Enter yourEmail</Typography>
+      <TextField
+        label="Email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+    </Box>
+  );
+};
+
+const NftCard = ({ nft, popUpExecuted, setPopUpExecuted, ...other }) => {
+  const [currentNft, setCurrentNft] = useState(nft);
+  const [openModal, setOpenModal] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const postLikeMetric = (type) => {
+    const likeProductMetric = {
+      email: email ? email : "No email",
+      itemId: currentNft.id,
+      entity: "NFT",
+      date: new Date().toISOString(),
+      type,
+    };
+    //post metric
+    postMetric(likeProductMetric);
+  };
+
+  const handleModal = () => {
+    postLikeMetric("LIKE");
+    setOpenModal(false);
+  };
+
   useEffect(() => {
     setCurrentNft(nft);
   }, [nft]);
+
+  const handleLikes = async () => {
+    const operation = currentNft.isFavorite ? "SUBSTRACT" : "ADD";
+    const updatedNft = await updateNftLikes(operation, currentNft);
+    setCurrentNft({ ...updatedNft, isFavorite: !currentNft.isFavorite });
+    if (!popUpExecuted && operation === "ADD") {
+      setOpenModal(true);
+      setPopUpExecuted(true);
+    } else if (popUpExecuted && operation === "ADD") {
+      postLikeMetric("LIKE");
+    }
+  };
 
   return (
     <Card {...other}>
@@ -72,13 +123,7 @@ const NftCard = ({ nft, ...other }) => {
           </IconButton>
         </Box>
         <Box>
-          <IconButton
-            onClick={async () => {
-              const operation = currentNft.isFavorite ? "SUBSTRACT" : "ADD";
-              const updatedNft = await updateNftLikes(operation, currentNft);
-              setCurrentNft(updatedNft);
-            }}
-          >
+          <IconButton onClick={handleLikes}>
             {currentNft.isFavorite ? (
               <FavoriteIcon style={{ marginRight: "5px" }} />
             ) : (
@@ -118,11 +163,25 @@ const NftCard = ({ nft, ...other }) => {
             </Typography>
           </Box>
 
-          <Button color="primary" variant="contained" sx={{ mr: 1 }}>
+          <Button
+            color="primary"
+            variant="contained"
+            sx={{ mr: 1 }}
+            onClick={() => {
+              postLikeMetric("BUY");
+            }}
+          >
             Buy Now
           </Button>
         </Footer>
       </DetailsBox>
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        onConfirm={handleModal}
+        onClose={handleModal}
+        content={<ModalContent email={email} setEmail={setEmail} />}
+      />
     </Card>
   );
 };

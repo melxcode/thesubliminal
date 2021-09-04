@@ -12,7 +12,6 @@ export const getNfts = async () => {
       });
       return items;
     });
-  console.log(nfts);
   return nfts;
 };
 
@@ -23,10 +22,10 @@ export const updateNftLikes = async (operation, nft) => {
   const currentNftRef = nfts.child(nft.id);
   const updatedNft = {
     ...nft,
-    isFavorite: !nft.isFavorite,
+    isFavorite: false,
     likes: operation === "ADD" ? nft.likes + 1 : nft.likes - 1,
   };
-  const response = await currentNftRef.update(updatedNft);
-  console.log(response);
+  await currentNftRef.update(updatedNft);
+
   return updatedNft;
 };
